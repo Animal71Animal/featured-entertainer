@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featured Entertainer Sign-Up | Spearmint Rhino Boise</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      color: #e8d5b0;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(10,10,10,1) 100%),
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="1" fill="%23c9a84c" opacity="0.3"/></svg>') repeat;
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid rgba(201,168,76,0.40);
+    }
+
+    .logo-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,168,76,0.60);
+      color: #c9a84c;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 6vw, 58px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    h1 span { color: #c9a84c; }
+
+    .subtitle {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.90);
+      margin-bottom: 36px;
+    }
+
+    .intro-box {
+      max-width: 680px;
+      margin: 0 auto 0;
+      background: rgba(201,168,76,0.25);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 2px;
+      padding: 28px 32px;
+      text-align: left;
+    }
+
+    .intro-box p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      line-height: 1.75;
+      color: #d4c4a0;
+      font-weight: 400;
+    }
+
+    .highlight { color: #c9a84c; font-weight: 600; }
+
+    .form-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    .section-title {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.40);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 540px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .intro-box { padding: 22px 20px; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.80);
+    }
+
+    input, select, textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.40);
+      border-radius: 2px;
+      color: #e8d5b0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      padding: 13px 16px;
+      width: 100%;
+      transition: border-color 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(201,168,76,0.80);
+      background: rgba(255,255,255,0.06);
+    }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+    }
+
+    select option {
+      background: #1a1a1a;
+      color: #e8d5b0;
+    }
+
+    textarea { resize: vertical; min-height: 90px; }
+
+    .requirements {
+      background: rgba(201,168,76,0.24);
+      border-left: 2px solid rgba(201,168,76,0.70);
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #c8b89a;
+    }
+
+    .requirements strong {
+      display: block;
+      color: #c9a84c;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .requirements ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .requirements ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .requirements ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: #c9a84c;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 20px 0;
+      cursor: pointer;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      padding: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: #c9a84c;
+    }
+
+    .checkbox-group span {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #b0a08a;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 18px 32px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover { background: #e0bd5e; }
+    .submit-btn:active { transform: scale(0.99); }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: rgba(201,168,76,0.55);
+      letter-spacing: 1px;
+    }
+
+    /* Success state */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .success-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .success-screen h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      color: #c9a84c;
+      margin-bottom: 12px;
+    }
+
+    .success-screen p {
+      color: #b0a08a;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.40), transparent);
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="logo-badge">Spearmint Rhino Boise</div>
+    <h1>Featured<br /><span>Entertainer</span></h1>
+    <div class="subtitle">Weekend Showcase Sign-Up</div>
+
+    <div class="intro-box">
+      <p>
+        We're selecting <span class="highlight">one entertainer per weekend</span> to take the stage as our
+        <span class="highlight">Featured Entertainer</span> — a dedicated, fully produced showcase experience
+        designed to captivate our guests on both Friday and Saturday night. Your performance will take place
+        <span class="highlight">after Midnight Showtime</span>, during the Dance Special, when the energy
+        is at its peak and the room is fully charged. This isn't just a performance — it's a
+        <span class="highlight">curated, immersive show experience</span> built around your persona,
+        your music, and your vision. Selected entertainers will participate in
+        <span class="highlight">1 to 2 rehearsal and strategy sessions with Animal</span>
+        to develop a fully themed, choreographed production that leaves a lasting
+        impression on every guest in the building.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <form id="signupForm">
+
+      <div class="section-title">Your Information</div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="stageName">Stage Name</label>
+          <input type="text" id="stageName" name="stageName" placeholder="Your stage name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(208) 000-0000" required />
+        </div>
+
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">Select Your Weekend</div>
+
+      <div class="form-group full" style="margin-bottom: 16px;">
+        <label for="weekend">Choose Available Weekend</label>
+        <select id="weekend" name="weekend" required>
+          <option value="" disabled selected>— Loading available weekends... —</option>
+        </select>
+        <p id="noWeekendsMsg" style="display:none; color:#c9a84c; font-size:13px; margin-top:8px;">
+          All weekends are currently booked. Check back later!
+        </p>
+      </div>
+
+      <div class="form-group full" style="margin-bottom: 0;">
+        <label for="theme">Show Theme / Concept Ideas (Optional)</label>
+        <textarea id="theme" name="theme" placeholder="Describe your vision, aesthetic, music style, or any theme ideas for your show..."></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="requirements">
+        <strong>Requirements & What to Expect</strong>
+        <ul>
+          <li>Commitment to both Friday and Saturday of your selected weekend</li>
+          <li>1–2 rehearsal/strategy sessions with Animal before the weekend</li>
+          <li>Performance takes place after Midnight Showtime, during the Dance Special</li>
+          <li>Full theme, music, and staging will be developed collaboratively in prep sessions</li>
+          <li>Professional attitude and reliability are required — cancellations forfeit the slot</li>
+        </ul>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="confirm" name="confirm" required />
+        <span>I understand this is a commitment to both nights of my selected weekend, and that I am required to attend at least one rehearsal/strategy session with Animal prior to the show.</span>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+
+      <p class="footer-note">Questions? See Animal at the DJ booth.</p>
+
+    </form>
+
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✨</div>
+      <h2>You're In</h2>
+      <p>Your application has been received.<br />Animal will be in touch to schedule your rehearsal session.<br /><br />
+      <em style="color: rgba(201,168,76,0.70); font-size: 12px;">See you in the spotlight.</em></p>
+    </div>
+  </div>
+
+  <script>
+    // Load available weekends on page load
+    async function loadWeekends() {
+      try {
+        const res = await fetch('/api/weekends');
+        const data = await res.json();
+        const select = document.getElementById('weekend');
+        
+        if (data.available.length === 0) {
+          select.innerHTML = '<option value="" disabled selected>— All weekends booked —</option>';
+          document.getElementById('noWeekendsMsg').style.display = 'block';
+          document.querySelector('.submit-btn').disabled = true;
+          return;
+        }
+        
+        select.innerHTML = '<option value="" disabled selected>— Select a weekend —</option>';
+        data.available.forEach(w => {
+          const opt = document.createElement('option');
+          opt.value = w.value;
+          opt.textContent = w.label;
+          select.appendChild(opt);
+        });
+      } catch(e) {
+        console.error('Failed to load weekends:', e);
+        // Fallback to all weekends if API fails
+        const select = document.getElementById('weekend');
+        select.innerHTML = '<option value="" disabled selected>— Select a weekend —</option>' +
+          '<option value="2026-06-05">June 5 & 6, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-06-12">June 12 & 13, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-06-19">June 19 & 20, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-06-26">June 26 & 27, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-07-10">July 10 & 11, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-07-17">July 17 & 18, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-07-24">July 24 & 25, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-07-31">July 31 & Aug 1, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-08-07">August 7 & 8, 2026 (Fri–Sat)</option>' +
+          '<option value="2026-08-14">August 14 & 15, 2026 (Fri–Sat)</option>';
+      }
+    }
+    
+    loadWeekends();
+
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.querySelector('.submit-btn');
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+
+      const weekendSel = document.getElementById('weekend');
+      const data = {
+        stageName: document.getElementById('stageName').value,
+        phone: document.getElementById('phone').value,
+        weekend: weekendSel.value,
+        weekendLabel: weekendSel.options[weekendSel.selectedIndex].text,
+        theme: document.getElementById('theme').value,
+        submittedAt: new Date().toISOString()
+      };
+
+      // Mark weekend as taken first
+      try {
+        await fetch('/api/weekends', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ weekend: data.weekend, stageName: data.stageName })
+        });
+      } catch(e) {
+        console.error('Failed to mark weekend taken:', e);
+      }
+
+      try {
+        await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch(err) {
+        console.error('Submit error:', err);
+      }
+
+      // Show success regardless (don't block on network)
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

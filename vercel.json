@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "env": {
+    "DISCORD_BOT_TOKEN": "[set-in-vercel-dashboard]",
+    "GOOGLE_SCRIPT_URL": "https://script.google.com/macros/s/AKfycbwpSeR9Tto5byUbKRNCFYW95V_4o6ZSel3S-BwsfInS3epKsKUM7M8fnIeoXVx7uP7f/exec"
+  },
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.jpg", "use": "@vercel/static" },
+    { "src": "*.pdf", "use": "@vercel/static" },
+    { "src": "*.png", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/submit", "dest": "/api/submit.js" },
+    { "src": "/flyer", "dest": "/flyer.html" },
+    { "src": "/flyer.html", "dest": "/flyer.html" },
+    { "src": "/dancer.jpg", "dest": "/dancer.jpg" },
+    { "src": "/FeaturedEntertainer-Flyer.pdf", "dest": "/FeaturedEntertainer-Flyer.pdf" },
+    { "src": "/FeaturedEntertainer-Flyer.png", "dest": "/FeaturedEntertainer-Flyer.png" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
