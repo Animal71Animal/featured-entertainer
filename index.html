@@ -214,6 +214,11 @@
       margin-top: 2px;
       cursor: pointer;
       accent-color: #c9a84c;
+      -webkit-appearance: checkbox;
+      appearance: checkbox;
+      opacity: 1;
+      position: static;
+      z-index: 1;
     }
 
     .checkbox-group span {
@@ -355,10 +360,10 @@
         </ul>
       </div>
 
-      <div class="checkbox-group">
+      <label class="checkbox-group" for="confirm">
         <input type="checkbox" id="confirm" name="confirm" required />
         <span>I understand this is a commitment to both nights of my selected weekend, and that I am required to attend at least one rehearsal/strategy session with Animal prior to the show.</span>
-      </div>
+      </label>
 
       <button type="submit" class="submit-btn">Submit Application</button>
 
