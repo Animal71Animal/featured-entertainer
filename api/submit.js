@@ -2,7 +2,7 @@
 // Posts to Discord #featured-entertainer + sends to Google Sheets via Apps Script
 
 const DISCORD_TOKEN = process.env.DISCORD_BOT_TOKEN;
-const DISCORD_CHANNEL_ID = '1495242759043547286';
+const DISCORD_CHANNEL_ID = '1498173573477433378';
 const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL; // set after Apps Script deploy
 
 export default async function handler(req, res) {
