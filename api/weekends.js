@@ -6,16 +6,12 @@ const DATA_FILE = path.join(process.cwd(), 'data', 'taken-weekends.json');
 
 // All possible weekends
 const ALL_WEEKENDS = [
-  { value: '2026-06-05', label: 'June 5 & 6, 2026 (Fri–Sat)' },
-  { value: '2026-06-12', label: 'June 12 & 13, 2026 (Fri–Sat)' },
-  { value: '2026-06-19', label: 'June 19 & 20, 2026 (Fri–Sat)' },
-  { value: '2026-06-26', label: 'June 26 & 27, 2026 (Fri–Sat)' },
   { value: '2026-07-10', label: 'July 10 & 11, 2026 (Fri–Sat)' },
-  { value: '2026-07-17', label: 'July 17 & 18, 2026 (Fri–Sat)' },
   { value: '2026-07-24', label: 'July 24 & 25, 2026 (Fri–Sat)' },
-  { value: '2026-07-31', label: 'July 31 & Aug 1, 2026 (Fri–Sat)' },
   { value: '2026-08-07', label: 'August 7 & 8, 2026 (Fri–Sat)' },
-  { value: '2026-08-14', label: 'August 14 & 15, 2026 (Fri–Sat)' },
+  { value: '2026-08-21', label: 'August 21 & 22, 2026 (Fri–Sat)' },
+  { value: '2026-09-04', label: 'September 4 & 5, 2026 (Fri–Sat)' },
+  { value: '2026-09-18', label: 'September 18 & 19, 2026 (Fri–Sat)' },
 ];
 
 function getTakenWeekends() {
