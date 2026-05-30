@@ -246,6 +246,18 @@
 
     .submit-btn:hover { background: #e0bd5e; }
     .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
+
+    label .optional {
+      text-transform: none;
+      letter-spacing: 0.5px;
+      font-size: 9px;
+      color: rgba(201,168,76,0.50);
+      margin-left: 4px;
+    }
 
     .footer-note {
       text-align: center;
@@ -318,22 +330,31 @@
 
       <div class="form-grid">
         <div class="form-group">
-          <label for="stageName">Stage Name</label>
+          <label for="stageName">Stage Name *</label>
           <input type="text" id="stageName" name="stageName" placeholder="Your stage name" required />
         </div>
 
         <div class="form-group">
-          <label for="phone">Phone Number</label>
+          <label for="phone">Phone Number *</label>
           <input type="tel" id="phone" name="phone" placeholder="(208) 000-0000" required />
         </div>
 
+        <div class="form-group">
+          <label for="socialHandle">Instagram / Social Handle <span class="optional">(optional)</span></label>
+          <input type="text" id="socialHandle" name="socialHandle" placeholder="@yourhandle" />
+        </div>
+
+        <div class="form-group">
+          <label for="experience">Performance Experience <span class="optional">(optional)</span></label>
+          <input type="text" id="experience" name="experience" placeholder="Years performing, venues, etc." />
+        </div>
       </div>
 
       <div class="divider"></div>
       <div class="section-title">Select Your Weekend</div>
 
       <div class="form-group full" style="margin-bottom: 16px;">
-        <label for="weekend">Choose Available Weekend</label>
+        <label for="weekend">Choose Available Weekend *</label>
         <select id="weekend" name="weekend" required>
           <option value="" disabled selected>— Loading available weekends... —</option>
         </select>
@@ -342,9 +363,59 @@
         </p>
       </div>
 
-      <div class="form-group full" style="margin-bottom: 0;">
-        <label for="theme">Show Theme / Concept Ideas (Optional)</label>
-        <textarea id="theme" name="theme" placeholder="Describe your vision, aesthetic, music style, or any theme ideas for your show..."></textarea>
+      <div class="divider"></div>
+      <div class="section-title">Show Details</div>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label for="theme">Show Theme / Concept <span class="optional">(optional)</span></label>
+          <textarea id="theme" name="theme" placeholder="Describe your vision, aesthetic, music style, or any theme ideas for your show..."></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label for="costume">Costume Ideas <span class="optional">(optional)</span></label>
+          <textarea id="costume" name="costume" placeholder="Describe any costume concepts, colors, styles, or specific looks you have in mind..."></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label for="props">Props / Special Requests <span class="optional">(optional)</span></label>
+          <textarea id="props" name="props" placeholder="Any props, lighting effects, special music, or production elements you want to include..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="musicStyle">Music Style / Genre <span class="optional">(optional)</span></label>
+          <input type="text" id="musicStyle" name="musicStyle" placeholder="e.g. Hip-Hop, EDM, Rock, Mixed" />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">Emergency Contact</div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="emergencyName">Contact Name <span class="optional">(optional)</span></label>
+          <input type="text" id="emergencyName" name="emergencyName" placeholder="Emergency contact name" />
+        </div>
+
+        <div class="form-group">
+          <label for="emergencyPhone">Contact Phone <span class="optional">(optional)</span></label>
+          <input type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="(208) 000-0000" />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">Additional Info</div>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label for="accessibility">Dietary / Accessibility Needs <span class="optional">(optional)</span></label>
+          <textarea id="accessibility" name="accessibility" placeholder="Any dietary restrictions, accessibility needs, or accommodations we should be aware of..."></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label for="notes">Anything Else? <span class="optional">(optional)</span></label>
+          <textarea id="notes" name="notes" placeholder="Any other details, questions, or things we should know..."></textarea>
+        </div>
       </div>
 
       <div class="divider"></div>
@@ -380,20 +451,22 @@
   </div>
 
   <script>
-    // Load available weekends on page load
+    // Load available weekends on page load from Google Apps Script
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpSeR9Tto5byUbKRNCFYW95V_4o6ZSel3S-BwsfInS3epKsKUM7M8fnIeoXVx7uP7f/exec';
+
     async function loadWeekends() {
       try {
-        const res = await fetch('/api/weekends');
+        const res = await fetch(APPS_SCRIPT_URL + '?action=weekends');
         const data = await res.json();
         const select = document.getElementById('weekend');
-        
+
         if (data.available.length === 0) {
           select.innerHTML = '<option value="" disabled selected>— All weekends booked —</option>';
           document.getElementById('noWeekendsMsg').style.display = 'block';
           document.querySelector('.submit-btn').disabled = true;
           return;
         }
-        
+
         select.innerHTML = '<option value="" disabled selected>— Select a weekend —</option>';
         data.available.forEach(w => {
           const opt = document.createElement('option');
@@ -403,7 +476,7 @@
         });
       } catch(e) {
         console.error('Failed to load weekends:', e);
-        // Fallback to all weekends if API fails
+        // Fallback to static list if Apps Script fails
         const select = document.getElementById('weekend');
         select.innerHTML = '<option value="" disabled selected>— Select a weekend —</option>' +
           '<option value="2026-07-10">July 10 & 11, 2026 (Fri–Sat)</option>' +
@@ -417,7 +490,7 @@
           '<option value="2026-10-30">October 30 & 31, 2026 (Fri–Sat)</option>';
       }
     }
-    
+
     loadWeekends();
 
     document.getElementById('signupForm').addEventListener('submit', async function(e) {
@@ -430,29 +503,32 @@
       const data = {
         stageName: document.getElementById('stageName').value,
         phone: document.getElementById('phone').value,
+        socialHandle: document.getElementById('socialHandle').value,
+        experience: document.getElementById('experience').value,
         weekend: weekendSel.value,
         weekendLabel: weekendSel.options[weekendSel.selectedIndex].text,
         theme: document.getElementById('theme').value,
+        costume: document.getElementById('costume').value,
+        props: document.getElementById('props').value,
+        musicStyle: document.getElementById('musicStyle').value,
+        emergencyName: document.getElementById('emergencyName').value,
+        emergencyPhone: document.getElementById('emergencyPhone').value,
+        accessibility: document.getElementById('accessibility').value,
+        notes: document.getElementById('notes').value,
         submittedAt: new Date().toISOString()
       };
 
-      // Mark weekend as taken first
       try {
-        await fetch('/api/weekends', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ weekend: data.weekend, stageName: data.stageName })
-        });
-      } catch(e) {
-        console.error('Failed to mark weekend taken:', e);
-      }
-
-      try {
-        await fetch('/api/submit', {
+        const resp = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
+
+        const result = await resp.json();
+        if (!result.ok) {
+          console.error('Submission error:', result.error);
+        }
       } catch(err) {
         console.error('Submit error:', err);
       }
