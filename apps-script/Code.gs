@@ -1,10 +1,21 @@
 /**
  * Featured Entertainer Sign-Up — Google Apps Script
  * Web app endpoint + sheet management
+ * Version: Option A (GET for weekends, POST for submit)
  */
 
 const SHEET_NAME = 'SignUps';
 const TAKEN_SHEET = 'TakenWeekends';
+
+function doGet(e) {
+  const action = e.parameter.action;
+
+  if (action === 'weekends') {
+    return getAvailableWeekends();
+  }
+
+  return jsonResponse({ error: 'Unknown action. Use ?action=weekends' }, 400);
+}
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -94,16 +105,6 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
-}
-
-function doGet(e) {
-  const action = e.parameter.action;
-
-  if (action === 'weekends') {
-    return getAvailableWeekends();
-  }
-
-  return jsonResponse({ error: 'Unknown action. Use ?action=weekends' }, 400);
 }
 
 function getAvailableWeekends() {

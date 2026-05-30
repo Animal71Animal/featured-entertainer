@@ -127,6 +127,14 @@
       color: rgba(201,168,76,0.80);
     }
 
+    label .optional {
+      text-transform: none;
+      letter-spacing: 0.5px;
+      font-size: 9px;
+      color: rgba(201,168,76,0.50);
+      margin-left: 4px;
+    }
+
     input, select, textarea {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(201,168,76,0.40);
@@ -251,14 +259,6 @@
       cursor: not-allowed;
     }
 
-    label .optional {
-      text-transform: none;
-      letter-spacing: 0.5px;
-      font-size: 9px;
-      color: rgba(201,168,76,0.50);
-      margin-left: 4px;
-    }
-
     .footer-note {
       text-align: center;
       margin-top: 20px;
@@ -381,7 +381,6 @@
           <label for="props">Props / Special Requests <span class="optional">(optional)</span></label>
           <textarea id="props" name="props" placeholder="Any props, lighting effects, special music, or production elements you want to include..."></textarea>
         </div>
-
       </div>
 
       <div class="divider"></div>
