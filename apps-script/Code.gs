@@ -33,17 +33,13 @@ function doPost(e) {
         'Show Theme / Concept',
         'Costume Ideas',
         'Props / Special Requests',
-        'Music Style / Genre',
         'Previous Performance Experience',
         'Instagram / Social Handle',
-        'Emergency Contact Name',
-        'Emergency Contact Phone',
-        'Dietary / Accessibility Needs',
         'Notes',
         'Status'
       ]);
       // Format header row
-      signupsSheet.getRange(1, 1, 1, 16)
+      signupsSheet.getRange(1, 1, 1, 12)
         .setFontWeight('bold')
         .setBackground('#c9a84c')
         .setFontColor('#0a0a0a');
@@ -65,12 +61,8 @@ function doPost(e) {
       data.theme || '',
       data.costume || '',
       data.props || '',
-      data.musicStyle || '',
       data.experience || '',
       data.socialHandle || '',
-      data.emergencyName || '',
-      data.emergencyPhone || '',
-      data.accessibility || '',
       data.notes || '',
       data.status || 'Pending'
     ]);

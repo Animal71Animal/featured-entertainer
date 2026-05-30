@@ -382,36 +382,12 @@
           <textarea id="props" name="props" placeholder="Any props, lighting effects, special music, or production elements you want to include..."></textarea>
         </div>
 
-        <div class="form-group">
-          <label for="musicStyle">Music Style / Genre <span class="optional">(optional)</span></label>
-          <input type="text" id="musicStyle" name="musicStyle" placeholder="e.g. Hip-Hop, EDM, Rock, Mixed" />
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="section-title">Emergency Contact</div>
-
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="emergencyName">Contact Name <span class="optional">(optional)</span></label>
-          <input type="text" id="emergencyName" name="emergencyName" placeholder="Emergency contact name" />
-        </div>
-
-        <div class="form-group">
-          <label for="emergencyPhone">Contact Phone <span class="optional">(optional)</span></label>
-          <input type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="(208) 000-0000" />
-        </div>
       </div>
 
       <div class="divider"></div>
       <div class="section-title">Additional Info</div>
 
       <div class="form-grid">
-        <div class="form-group full">
-          <label for="accessibility">Dietary / Accessibility Needs <span class="optional">(optional)</span></label>
-          <textarea id="accessibility" name="accessibility" placeholder="Any dietary restrictions, accessibility needs, or accommodations we should be aware of..."></textarea>
-        </div>
-
         <div class="form-group full">
           <label for="notes">Anything Else? <span class="optional">(optional)</span></label>
           <textarea id="notes" name="notes" placeholder="Any other details, questions, or things we should know..."></textarea>
@@ -510,10 +486,6 @@
         theme: document.getElementById('theme').value,
         costume: document.getElementById('costume').value,
         props: document.getElementById('props').value,
-        musicStyle: document.getElementById('musicStyle').value,
-        emergencyName: document.getElementById('emergencyName').value,
-        emergencyPhone: document.getElementById('emergencyPhone').value,
-        accessibility: document.getElementById('accessibility').value,
         notes: document.getElementById('notes').value,
         submittedAt: new Date().toISOString()
       };

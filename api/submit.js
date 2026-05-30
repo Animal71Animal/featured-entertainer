@@ -17,9 +17,8 @@ export default async function handler(req, res) {
   const body = req.body || {};
   const {
     stageName, phone, weekend, weekendLabel, theme,
-    costume, props, musicStyle, experience, socialHandle,
-    emergencyName, emergencyPhone, accessibility, notes,
-    submittedAt
+    costume, props, experience, socialHandle,
+    notes, submittedAt
   } = body;
 
   if (!stageName || !phone || !weekend) {
@@ -62,7 +61,6 @@ export default async function handler(req, res) {
       if (theme) fields.push({ name: 'Show Theme', value: theme.substring(0, 1024), inline: false });
       if (costume) fields.push({ name: 'Costume Ideas', value: costume.substring(0, 1024), inline: false });
       if (props) fields.push({ name: 'Props / Requests', value: props.substring(0, 1024), inline: false });
-      if (musicStyle) fields.push({ name: 'Music Style', value: musicStyle, inline: true });
       if (socialHandle) fields.push({ name: 'Social', value: socialHandle, inline: true });
 
       const discordMsg = {
