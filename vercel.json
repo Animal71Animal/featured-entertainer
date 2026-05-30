@@ -2,7 +2,7 @@
   "version": 2,
   "env": {
     "DISCORD_BOT_TOKEN": "[set-in-vercel-dashboard]",
-    "GOOGLE_SCRIPT_URL": "https://script.google.com/macros/s/AKfycbylfTbBCSPos8pM8t5td9Pt4cLdPx3vbGjQFBpTHFKrawnx7eQmGbjOUDF_Mw7sqF8S1w/exec"
+    "GOOGLE_SCRIPT_URL": "https://script.google.com/macros/s/AKfycbwjUoUvKfL5WrCiPBI6dWRnb7zeNxL1rDz8tMMxI3nGOgKHHyHQYvczGUQbdT_34-JdoQ/exec"
   },
   "builds": [
     { "src": "api/*.js", "use": "@vercel/node" },
