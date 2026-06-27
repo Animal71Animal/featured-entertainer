@@ -15,6 +15,7 @@ const ALL_WEEKENDS = [
   { value: '2026-10-02', label: 'October 2 & 3, 2026 (Fri–Sat)' },
   { value: '2026-10-16', label: 'October 16 & 17, 2026 (Fri–Sat)' },
   { value: '2026-10-30', label: 'October 30 & 31, 2026 (Fri–Sat)' },
+  { value: '2026-12-18', label: 'December 18 & 19, 2026 (Fri–Sat)' },
 ];
 
 function getTakenWeekends() {
